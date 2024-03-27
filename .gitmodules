@@ -1,3 +1,6 @@
 [submodule "THRYLOS/ThrylosEngine/3rd/spdlog"]
 	path = THRYLOS/ThrylosEngine/3rd/spdlog
 	url = https://github.com/gabime/spdlog
+[submodule "THRYLOS/ThrylosEngine/3rd/glfw"]
+	path = THRYLOS/ThrylosEngine/3rd/glfw
+	url = https://github.com/glfw/glfw

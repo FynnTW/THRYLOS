@@ -10,6 +10,11 @@ workspace "THRYLOS"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+IncludeDir = {}
+IncludeDir["GLFW"] = "ThrylosEngine/3rd/glfw/include"
+
+include "ThrylosEngine/3rd/glfw_premake.lua"
+
 project "ThrylosEngine"
     location "ThrylosEngine"
     kind "SharedLib"
@@ -17,6 +22,10 @@ project "ThrylosEngine"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+    pchheader "tpch.h"
+    
+    pchsource "ThrylosEngine/src/tpch.cpp"
 
     files
     {
@@ -27,7 +36,15 @@ project "ThrylosEngine"
     includedirs
     {
         "%{prj.name}/src",
-        "%{prj.name}/3rd/spdlog/include"
+        "%{prj.name}/src/Thrylos",
+        "%{prj.name}/3rd/spdlog/include",
+        "%{IncludeDir.GLFW}",
+    }
+
+    links
+    {
+        "GLFW",
+        "opengl32.lib",
     }
 
     filter "system:windows"
@@ -85,7 +102,8 @@ project "Sandbox"
     includedirs
     {
         "ThrylosEngine/3rd/spdlog/include",
-        "ThrylosEngine/src"
+        "ThrylosEngine/src",
+        "%{IncludeDir.GLFW}",
     }
 
     links

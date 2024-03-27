@@ -4,10 +4,11 @@
     <Filter Include="Thrylos">
       <UniqueIdentifier>{9A2BC740-060B-46DC-0F23-D1B27B81AC3D}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Thrylos\Events">
+      <UniqueIdentifier>{3E86B8B4-2A54-ACBA-13E8-1CE1FF54881F}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\EntryPoint.h" />
-    <ClInclude Include="src\Test.h" />
     <ClInclude Include="src\Thrylos.h" />
     <ClInclude Include="src\Thrylos\Application.h">
       <Filter>Thrylos</Filter>
@@ -15,17 +16,33 @@
     <ClInclude Include="src\Thrylos\Core.h">
       <Filter>Thrylos</Filter>
     </ClInclude>
+    <ClInclude Include="src\Thrylos\EntryPoint.h">
+      <Filter>Thrylos</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Thrylos\Events\ApplicationEvent.h">
+      <Filter>Thrylos\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Thrylos\Events\Event.h">
+      <Filter>Thrylos\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Thrylos\Events\KeyEvent.h">
+      <Filter>Thrylos\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Thrylos\Events\MouseEvent.h">
+      <Filter>Thrylos\Events</Filter>
+    </ClInclude>
     <ClInclude Include="src\Thrylos\Log.h">
       <Filter>Thrylos</Filter>
     </ClInclude>
+    <ClInclude Include="src\tpch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Test.cpp" />
     <ClCompile Include="src\Thrylos\Application.cpp">
       <Filter>Thrylos</Filter>
     </ClCompile>
     <ClCompile Include="src\Thrylos\Log.cpp">
       <Filter>Thrylos</Filter>
     </ClCompile>
+    <ClCompile Include="src\tpch.cpp" />
   </ItemGroup>
 </Project>
