@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
@@ -9,35 +9,39 @@
       <Configuration>Release</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Dist|x64">
+      <Configuration>Dist</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{A8AFBEBE-A554-46E1-9BCD-CECB697597DE}</ProjectGuid>
+    <ProjectGuid>{F4C124E3-60A1-A37E-69B9-2E55D5170AE0}</ProjectGuid>
+    <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Sandbox</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
-  <PropertyGroup>
-    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
-  </ImportGroup>
-  <ImportGroup Label="Shared">
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -45,27 +49,42 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
-    <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
+    <OutDir>..\bin\Debug-windows-x86_64\Sandbox\</OutDir>
+    <IntDir>..\bin-int\Debug-windows-x86_64\Sandbox\</IntDir>
+    <TargetName>Sandbox</TargetName>
+    <TargetExt>.exe</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
-    <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
+    <OutDir>..\bin\Release-windows-x86_64\Sandbox\</OutDir>
+    <IntDir>..\bin-int\Release-windows-x86_64\Sandbox\</IntDir>
+    <TargetName>Sandbox</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\bin\Dist-windows-x86_64\Sandbox\</OutDir>
+    <IntDir>..\bin-int\Dist-windows-x86_64\Sandbox\</IntDir>
+    <TargetName>Sandbox</TargetName>
+    <TargetExt>.exe</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>THRYLOS_PLATFORM_WINDOWS;THRYLOS_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\ThrylosEngine\3rd\spdlog\include;..\ThrylosEngine\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>THRYLOS_PLATFORM_WINDOWS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)\ThrylosEngine\src</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -76,102 +95,51 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>THRYLOS_PLATFORM_WINDOWS;THRYLOS_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\ThrylosEngine\3rd\spdlog\include;..\ThrylosEngine\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>THRYLOS_PLATFORM_WINDOWS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>THRYLOS_PLATFORM_WINDOWS;THRYLOS_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\ThrylosEngine\3rd\spdlog\include;..\ThrylosEngine\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ThrylosEngine\ThrylosEngine.vcxproj">
-      <Project>{6e80b9f4-48f9-4dd1-9e00-d735de076a8f}</Project>
-      <Name>ThrylosEngine</Name>
-    </ProjectReference>
+    <ClCompile Include="src\Sandbox.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Sandbox.cpp">
-      <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
-      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <Optimization>Disabled</Optimization>
-      <SupportJustMyCode>true</SupportJustMyCode>
-      <AssemblerOutput>NoListing</AssemblerOutput>
-      <AssemblerListingLocation>D:\data\Projects\THRYLOS\THRYLOS\bin-int\Debug-x64\Sandbox\</AssemblerListingLocation>
-      <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
-      <BrowseInformation>false</BrowseInformation>
-      <BrowseInformationFile>D:\data\Projects\THRYLOS\THRYLOS\bin-int\Debug-x64\Sandbox\</BrowseInformationFile>
-      <CompileAs>Default</CompileAs>
-      <ConformanceMode>true</ConformanceMode>
-      <DiagnosticsFormat>Column</DiagnosticsFormat>
-      <DisableLanguageExtensions>false</DisableLanguageExtensions>
-      <ErrorReporting>Prompt</ErrorReporting>
-      <ExpandAttributedSource>false</ExpandAttributedSource>
-      <ExceptionHandling>Sync</ExceptionHandling>
-      <EnableASAN>false</EnableASAN>
-      <EnableFuzzer>false</EnableFuzzer>
-      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
-      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
-      <FloatingPointModel>Precise</FloatingPointModel>
-      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
-      <GenerateModuleDependencies>false</GenerateModuleDependencies>
-      <GenerateSourceDependencies>false</GenerateSourceDependencies>
-      <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
-      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
-      <IntrinsicFunctions>false</IntrinsicFunctions>
-      <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
-      <LanguageStandard>Default</LanguageStandard>
-      <LanguageStandard_C>Default</LanguageStandard_C>
-      <MinimalRebuild>false</MinimalRebuild>
-      <ModuleDependenciesFile>D:\data\Projects\THRYLOS\THRYLOS\bin-int\Debug-x64\Sandbox\</ModuleDependenciesFile>
-      <ModuleOutputFile>D:\data\Projects\THRYLOS\THRYLOS\bin-int\Debug-x64\Sandbox\</ModuleOutputFile>
-      <OmitDefaultLibName>false</OmitDefaultLibName>
-      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
-      <WholeProgramOptimization>false</WholeProgramOptimization>
-      <ObjectFileName>D:\data\Projects\THRYLOS\THRYLOS\bin-int\Debug-x64\Sandbox\</ObjectFileName>
-      <CallingConvention>Cdecl</CallingConvention>
-      <ProgramDataBaseFileName>D:\data\Projects\THRYLOS\THRYLOS\bin-int\Debug-x64\Sandbox\vc143.pdb</ProgramDataBaseFileName>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <PrecompiledHeaderOutputFile>D:\data\Projects\THRYLOS\THRYLOS\bin-int\Debug-x64\Sandbox\Sandbox.pch</PrecompiledHeaderOutputFile>
-      <PreprocessToFile>false</PreprocessToFile>
-      <PreprocessKeepComments>false</PreprocessKeepComments>
-      <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
-      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
-      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
-      <ShowIncludes>false</ShowIncludes>
-      <SourceDependenciesFile>D:\data\Projects\THRYLOS\THRYLOS\bin-int\Debug-x64\Sandbox\</SourceDependenciesFile>
-      <SuppressStartupBanner>true</SuppressStartupBanner>
-      <BufferSecurityCheck>true</BufferSecurityCheck>
-      <SmallerTypeCheck>false</SmallerTypeCheck>
-      <SpectreMitigation>false</SpectreMitigation>
-      <StructMemberAlignment>Default</StructMemberAlignment>
-      <TrackerLogDirectory>D:\data\Projects\THRYLOS\THRYLOS\bin-int\Debug-x64\Sandbox\Sandbox.tlog\</TrackerLogDirectory>
-      <TranslateIncludes>false</TranslateIncludes>
-      <MinimalRebuildFromTracking>true</MinimalRebuildFromTracking>
-      <TreatWarningAsError>false</TreatWarningAsError>
-      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
-      <UseFullPaths>true</UseFullPaths>
-      <WarningLevel>Level3</WarningLevel>
-      <XMLDocumentationFileName>D:\data\Projects\THRYLOS\THRYLOS\bin-int\Debug-x64\Sandbox\</XMLDocumentationFileName>
-      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <IntelJCCErratum>false</IntelJCCErratum>
-      <BuildStlModules>false</BuildStlModules>
-      <TreatAngleIncludeAsExternal>false</TreatAngleIncludeAsExternal>
-      <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
-      <TreatExternalTemplatesAsInternal>true</TreatExternalTemplatesAsInternal>
-      <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_UNICODE;UNICODE;THRYLOS_PLATFORM_WINDOWS;</PreprocessorDefinitions>
-      <SDLCheck>true</SDLCheck>
-      <LinkCompiled>true</LinkCompiled>
-    </ClCompile>
+    <ProjectReference Include="..\ThrylosEngine\ThrylosEngine.vcxproj">
+      <Project>{30BAB879-9C7A-34B0-65B5-7D2DD134798C}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

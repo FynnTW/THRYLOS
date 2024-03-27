@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
@@ -9,35 +9,39 @@
       <Configuration>Release</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Dist|x64">
+      <Configuration>Dist</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{6E80B9F4-48F9-4DD1-9E00-D735DE076A8F}</ProjectGuid>
+    <ProjectGuid>{30BAB879-9C7A-34B0-65B5-7D2DD134798C}</ProjectGuid>
+    <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>ThrylosEngine</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
-  <PropertyGroup>
-    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
-  </ImportGroup>
-  <ImportGroup Label="Shared">
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -45,139 +49,118 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
-    <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
+    <OutDir>..\bin\Debug-windows-x86_64\ThrylosEngine\</OutDir>
+    <IntDir>..\bin-int\Debug-windows-x86_64\ThrylosEngine\</IntDir>
+    <TargetName>ThrylosEngine</TargetName>
+    <TargetExt>.dll</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
-    <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
+    <OutDir>..\bin\Release-windows-x86_64\ThrylosEngine\</OutDir>
+    <IntDir>..\bin-int\Release-windows-x86_64\ThrylosEngine\</IntDir>
+    <TargetName>ThrylosEngine</TargetName>
+    <TargetExt>.dll</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\bin\Dist-windows-x86_64\ThrylosEngine\</OutDir>
+    <IntDir>..\bin-int\Dist-windows-x86_64\ThrylosEngine\</IntDir>
+    <TargetName>ThrylosEngine</TargetName>
+    <TargetExt>.dll</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>THRYLOS_PLATFORM_WINDOWS;THRYLOS_BUILD_DLL;_WINDLL;THRYLOS_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;3rd\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;CPPDYNAMICLIBRARYTEMPLATE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <LanguageStandard>stdcpp20</LanguageStandard>
-      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ImportLibrary>..\bin\Debug-windows-x86_64\ThrylosEngine\ThrylosEngine.lib</ImportLibrary>
     </Link>
+    <PostBuildEvent>
+      <Command>IF EXIST ..\bin\Debug-windows-x86_64\ThrylosEngine\ThrylosEngine.dll\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\ThrylosEngine\ThrylosEngine.dll ..\bin\Debug-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\ThrylosEngine\ThrylosEngine.dll ..\bin\Debug-windows-x86_64\Sandbox &gt; nul)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>THRYLOS_PLATFORM_WINDOWS;THRYLOS_BUILD_DLL;_WINDLL;THRYLOS_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;3rd\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;CPPDYNAMICLIBRARYTEMPLATE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <LanguageStandard>stdcpp20</LanguageStandard>
-      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ImportLibrary>..\bin\Release-windows-x86_64\ThrylosEngine\ThrylosEngine.lib</ImportLibrary>
     </Link>
+    <PostBuildEvent>
+      <Command>IF EXIST ..\bin\Release-windows-x86_64\ThrylosEngine\ThrylosEngine.dll\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\ThrylosEngine\ThrylosEngine.dll ..\bin\Release-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\ThrylosEngine\ThrylosEngine.dll ..\bin\Release-windows-x86_64\Sandbox &gt; nul)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="src\Test.cpp" />
-    <ClCompile Include="src\Thrylos\Application.cpp">
-      <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
-      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <Optimization>Disabled</Optimization>
-      <SupportJustMyCode>true</SupportJustMyCode>
-      <AssemblerOutput>NoListing</AssemblerOutput>
-      <AssemblerListingLocation>D:\data\Projects\THRYLOS\THRYLOS\bin-int\Debug-x64\ThrylosEngine\</AssemblerListingLocation>
-      <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
-      <BrowseInformation>false</BrowseInformation>
-      <BrowseInformationFile>D:\data\Projects\THRYLOS\THRYLOS\bin-int\Debug-x64\ThrylosEngine\</BrowseInformationFile>
-      <CompileAs>Default</CompileAs>
-      <ConformanceMode>true</ConformanceMode>
-      <DiagnosticsFormat>Column</DiagnosticsFormat>
-      <DisableLanguageExtensions>false</DisableLanguageExtensions>
-      <ErrorReporting>Prompt</ErrorReporting>
-      <ExpandAttributedSource>false</ExpandAttributedSource>
-      <ExceptionHandling>Sync</ExceptionHandling>
-      <EnableASAN>false</EnableASAN>
-      <EnableFuzzer>false</EnableFuzzer>
-      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
-      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
-      <FloatingPointModel>Precise</FloatingPointModel>
-      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
-      <GenerateModuleDependencies>false</GenerateModuleDependencies>
-      <GenerateSourceDependencies>false</GenerateSourceDependencies>
-      <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
-      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
-      <IntrinsicFunctions>false</IntrinsicFunctions>
-      <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
-      <LanguageStandard>stdcpp20</LanguageStandard>
-      <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <MinimalRebuild>false</MinimalRebuild>
-      <ModuleDependenciesFile>D:\data\Projects\THRYLOS\THRYLOS\bin-int\Debug-x64\ThrylosEngine\</ModuleDependenciesFile>
-      <ModuleOutputFile>D:\data\Projects\THRYLOS\THRYLOS\bin-int\Debug-x64\ThrylosEngine\</ModuleOutputFile>
-      <OmitDefaultLibName>false</OmitDefaultLibName>
-      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
-      <WholeProgramOptimization>false</WholeProgramOptimization>
-      <ObjectFileName>D:\data\Projects\THRYLOS\THRYLOS\bin-int\Debug-x64\ThrylosEngine\</ObjectFileName>
-      <CallingConvention>Cdecl</CallingConvention>
-      <ProgramDataBaseFileName>D:\data\Projects\THRYLOS\THRYLOS\bin-int\Debug-x64\ThrylosEngine\vc143.pdb</ProgramDataBaseFileName>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
+    <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <PrecompiledHeaderOutputFile>D:\data\Projects\THRYLOS\THRYLOS\bin-int\Debug-x64\ThrylosEngine\ThrylosEngine.pch</PrecompiledHeaderOutputFile>
-      <PreprocessToFile>false</PreprocessToFile>
-      <PreprocessKeepComments>false</PreprocessKeepComments>
-      <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
-      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
-      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
-      <ShowIncludes>false</ShowIncludes>
-      <SourceDependenciesFile>D:\data\Projects\THRYLOS\THRYLOS\bin-int\Debug-x64\ThrylosEngine\</SourceDependenciesFile>
-      <SuppressStartupBanner>true</SuppressStartupBanner>
-      <BufferSecurityCheck>true</BufferSecurityCheck>
-      <SmallerTypeCheck>false</SmallerTypeCheck>
-      <SpectreMitigation>false</SpectreMitigation>
-      <StructMemberAlignment>Default</StructMemberAlignment>
-      <TrackerLogDirectory>D:\data\Projects\THRYLOS\THRYLOS\bin-int\Debug-x64\ThrylosEngine\ThrylosEngine.tlog\</TrackerLogDirectory>
-      <TranslateIncludes>false</TranslateIncludes>
-      <MinimalRebuildFromTracking>true</MinimalRebuildFromTracking>
-      <TreatWarningAsError>false</TreatWarningAsError>
-      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
-      <UseFullPaths>true</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <XMLDocumentationFileName>D:\data\Projects\THRYLOS\THRYLOS\bin-int\Debug-x64\ThrylosEngine\</XMLDocumentationFileName>
-      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <IntelJCCErratum>false</IntelJCCErratum>
-      <BuildStlModules>false</BuildStlModules>
-      <TreatAngleIncludeAsExternal>false</TreatAngleIncludeAsExternal>
-      <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
-      <TreatExternalTemplatesAsInternal>true</TreatExternalTemplatesAsInternal>
-      <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
-      <PreprocessorDefinitions>_DEBUG;CPPDYNAMICLIBRARYTEMPLATE_EXPORTS;_WINDOWS;_USRDLL;_WINDLL;_UNICODE;UNICODE;THRYLOS_PLATFORM_WINDOWS;THRYLOS_BUILD_DLL;</PreprocessorDefinitions>
-      <SDLCheck>true</SDLCheck>
-      <LinkCompiled>true</LinkCompiled>
+      <PreprocessorDefinitions>THRYLOS_PLATFORM_WINDOWS;THRYLOS_BUILD_DLL;_WINDLL;THRYLOS_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;3rd\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
-  </ItemGroup>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ImportLibrary>..\bin\Dist-windows-x86_64\ThrylosEngine\ThrylosEngine.lib</ImportLibrary>
+    </Link>
+    <PostBuildEvent>
+      <Command>IF EXIST ..\bin\Dist-windows-x86_64\ThrylosEngine\ThrylosEngine.dll\ (xcopy /Q /E /Y /I ..\bin\Dist-windows-x86_64\ThrylosEngine\ThrylosEngine.dll ..\bin\Dist-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Dist-windows-x86_64\ThrylosEngine\ThrylosEngine.dll ..\bin\Dist-windows-x86_64\Sandbox &gt; nul)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\EntryPoint.h" />
     <ClInclude Include="src\Test.h" />
     <ClInclude Include="src\Thrylos.h" />
     <ClInclude Include="src\Thrylos\Application.h" />
     <ClInclude Include="src\Thrylos\Core.h" />
+    <ClInclude Include="src\Thrylos\Events\ApplicationEvent.h" />
+    <ClInclude Include="src\Thrylos\Events\Event.h" />
+    <ClInclude Include="src\Thrylos\Events\KeyEvent.h" />
+    <ClInclude Include="src\Thrylos\Events\MouseEvent.h" />
+    <ClInclude Include="src\Thrylos\Log.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Test.cpp" />
+    <ClCompile Include="src\Thrylos\Application.cpp" />
+    <ClCompile Include="src\Thrylos\Log.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
