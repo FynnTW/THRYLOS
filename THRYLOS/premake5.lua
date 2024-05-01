@@ -12,8 +12,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
 IncludeDir["GLFW"] = "ThrylosEngine/3rd/glfw/include"
+IncludeDir["glad"] = "ThrylosEngine/3rd/glad/include"
 
 include "ThrylosEngine/3rd/glfw_premake.lua"
+include "ThrylosEngine/3rd/glad_premake.lua"
 
 project "ThrylosEngine"
     location "ThrylosEngine"
@@ -39,15 +41,18 @@ project "ThrylosEngine"
         "%{prj.name}/src/Thrylos",
         "%{prj.name}/3rd/spdlog/include",
         "%{IncludeDir.GLFW}",
+        "%{IncludeDir.glad}"
     }
 
     links
     {
         "GLFW",
+        "glad",
         "opengl32.lib",
     }
 
     filter "system:windows"
+        cppdialect "C++20"
         staticruntime "On"
         systemversion "latest"
 
@@ -55,7 +60,8 @@ project "ThrylosEngine"
         {
             "THRYLOS_PLATFORM_WINDOWS",
             "THRYLOS_BUILD_DLL",
-            "_WINDLL"
+            "_WINDLL",
+            "GLFW_INCLUDE_NONE"
         }
 
         postbuildcommands
@@ -104,6 +110,7 @@ project "Sandbox"
         "ThrylosEngine/3rd/spdlog/include",
         "ThrylosEngine/src",
         "%{IncludeDir.GLFW}",
+        "%{IncludeDir.Glad}"
     }
 
     links
@@ -112,6 +119,7 @@ project "Sandbox"
     }
 
     filter "system:windows"
+        cppdialect "C++20"
         staticruntime "On"
         systemversion "latest"
 

@@ -6,6 +6,8 @@
 #include "Events/KeyEvent.h"
 #include "Events/MouseEvent.h"
 
+#include <glad/glad.h>
+
 namespace Thrylos
 {
     //Static variable to keep track of whether GLFW has been initialized+
@@ -71,6 +73,8 @@ namespace Thrylos
 
         m_Window = glfwCreateWindow(static_cast<int>(props.width), static_cast<int>(props.height), props.title.c_str(), nullptr, nullptr);
         glfwMakeContextCurrent(m_Window);
+        int status = gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress));
+        THRYLOS_ASSERT(status, "Failed to initialize Glad!");
         glfwSetWindowUserPointer(m_Window, &m_Data);
         SetVSync(true);
         glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, const int width, const int height)

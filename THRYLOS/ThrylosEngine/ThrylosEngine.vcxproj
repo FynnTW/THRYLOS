@@ -79,14 +79,14 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>tpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>THRYLOS_PLATFORM_WINDOWS;THRYLOS_BUILD_DLL;_WINDLL;THRYLOS_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;src\Thrylos;3rd\spdlog\include;3rd\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>THRYLOS_PLATFORM_WINDOWS;THRYLOS_BUILD_DLL;_WINDLL;GLFW_INCLUDE_NONE;THRYLOS_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;src\Thrylos;3rd\spdlog\include;3rd\glfw\include;3rd\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
-      <ExternalWarningLevel>Level3</ExternalWarningLevel>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -103,8 +103,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>tpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>THRYLOS_PLATFORM_WINDOWS;THRYLOS_BUILD_DLL;_WINDLL;THRYLOS_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;src\Thrylos;3rd\spdlog\include;3rd\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>THRYLOS_PLATFORM_WINDOWS;THRYLOS_BUILD_DLL;_WINDLL;GLFW_INCLUDE_NONE;THRYLOS_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;src\Thrylos;3rd\spdlog\include;3rd\glfw\include;3rd\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -112,6 +112,7 @@
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
     <Link>
@@ -130,8 +131,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>tpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>THRYLOS_PLATFORM_WINDOWS;THRYLOS_BUILD_DLL;_WINDLL;THRYLOS_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;src\Thrylos;3rd\spdlog\include;3rd\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>THRYLOS_PLATFORM_WINDOWS;THRYLOS_BUILD_DLL;_WINDLL;GLFW_INCLUDE_NONE;THRYLOS_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;src\Thrylos;3rd\spdlog\include;3rd\glfw\include;3rd\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -139,6 +140,7 @@
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
     <Link>
@@ -162,6 +164,8 @@
     <ClInclude Include="src\Thrylos\Events\Event.h" />
     <ClInclude Include="src\Thrylos\Events\KeyEvent.h" />
     <ClInclude Include="src\Thrylos\Events\MouseEvent.h" />
+    <ClInclude Include="src\Thrylos\Layer.h" />
+    <ClInclude Include="src\Thrylos\LayerStack.h" />
     <ClInclude Include="src\Thrylos\Log.h" />
     <ClInclude Include="src\Thrylos\Window.h" />
     <ClInclude Include="src\tpch.h" />
@@ -169,6 +173,8 @@
   <ItemGroup>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Thrylos\Application.cpp" />
+    <ClCompile Include="src\Thrylos\Layer.cpp" />
+    <ClCompile Include="src\Thrylos\LayerStack.cpp" />
     <ClCompile Include="src\Thrylos\Log.cpp" />
     <ClCompile Include="src\tpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
@@ -177,6 +183,9 @@
   <ItemGroup>
     <ProjectReference Include="3rd\GLFW.vcxproj">
       <Project>{154B857C-0182-860D-AA6E-6C109684020F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="3rd\glad.vcxproj">
+      <Project>{DD62977C-C999-980D-7286-7E105E9C140F}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
