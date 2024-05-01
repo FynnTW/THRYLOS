@@ -86,6 +86,7 @@
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -152,6 +153,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Thrylos.h" />
     <ClInclude Include="src\Thrylos\Application.h" />
     <ClInclude Include="src\Thrylos\Core.h" />
@@ -165,6 +167,7 @@
     <ClInclude Include="src\tpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Thrylos\Application.cpp" />
     <ClCompile Include="src\Thrylos\Log.cpp" />
     <ClCompile Include="src\tpch.cpp">

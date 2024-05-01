@@ -1,6 +1,10 @@
 ﻿#pragma once
 
 #include "Core.h"
+#include "Window.h"
+#include "Events/ApplicationEvent.h"
+
+class Window;
 
 namespace Thrylos
 {
@@ -10,10 +14,19 @@ namespace Thrylos
     class THRYLOS_API Application
     {
     public:
+        Application();
+        virtual ~Application();
         /**
          * @brief Run the application
          */
-        static void Run();
+        void Run();
+
+        //onEvent
+        void OnEvent(Event& e);
+    private:
+        bool OnWindowClose(WindowCloseEvent& e);
+        std::unique_ptr<Window> m_Window;
+        bool m_Running = true;
     };
 
     /**

@@ -32,3 +32,5 @@
 *.app
 /THRYLOS/bin-int
 /THRYLOS/bin
+/Medieval2Tool
+/Medieval2Tool/Models

@@ -13,7 +13,7 @@ inline int main(int argc, int argv[])
     LOG_CORE_INFO("Initialized log");
     LOG_CLIENT_INFO("Initialized Log!");
     auto const app = Thrylos::CreateApplication();
-    Thrylos::Application::Run();
+    app->Run();
     delete app;
 }
 

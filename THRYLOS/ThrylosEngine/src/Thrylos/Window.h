@@ -3,7 +3,6 @@
 #include "tpch.h"
 
 #include "Events/Event.h"
-#include "Thrylos/Application.h"
 
 namespace Thrylos
 {

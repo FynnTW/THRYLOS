@@ -14,6 +14,8 @@
 #include <unordered_map>
 #include <unordered_set>
 
+#include "Thrylos/Log.h"
+
 #ifdef THRYLOS_PLATFORM_WINDOWS
     #include <Windows.h>
 #endif
