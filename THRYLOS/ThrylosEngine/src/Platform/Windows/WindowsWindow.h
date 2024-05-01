@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "Window.h"
 #include "GLFW/glfw3.h"
+#include "Renderer/GraphicsContext.h"
 
 namespace Thrylos
 {
@@ -49,6 +50,7 @@ namespace Thrylos
 
             EventCallbackFn eventCallback;
         } m_Data;
+        GraphicsContext *m_Context;
         
     
     };

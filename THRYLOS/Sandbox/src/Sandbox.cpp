@@ -1,28 +1,19 @@
 #include "imgui.h"
 #include "Thrylos.h"
 
-class ExampleLayer : public Thrylos::ImGuiLayer
+class ExampleLayer : public Thrylos::Layer
 {
 public:
     ExampleLayer()
     {
     }
     
-    void OnEvent(Thrylos::Event& event) override
-    {
-        ImGuiLayer::OnEvent(event);
-        LOG_CLIENT_TRACE("{0}", event);
-    }
-
-    void OnContextCreated(ImGuiContext* context) override
-    {
-        ImGui::SetCurrentContext(context);
-    }
-    
-    void OnDrawFrame() override
+    void OnImGuiRender() override
     {
         static bool show = true;
-        ImGui::ShowDemoWindow(&show);
+        ImGui::Begin("Window", &show);
+        ImGui::Text("Hello World");
+        ImGui::End();
     }
 };
 

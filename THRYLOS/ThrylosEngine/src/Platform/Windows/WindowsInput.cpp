@@ -40,7 +40,7 @@ namespace Thrylos
     {
         POINT point;
         GetCursorPos(&point);
-        return point.x;
+        return static_cast<float>(point.x);
     }
 
     /**
@@ -54,7 +54,7 @@ namespace Thrylos
     {
         POINT point;
         GetCursorPos(&point);
-        return point.y;
+        return static_cast<float>(point.y);
     }
 
     /**
@@ -67,7 +67,7 @@ namespace Thrylos
         const auto window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
         double x, y;
         glfwGetCursorPos(window, &x, &y);
-        return x;  // NOLINT(clang-diagnostic-implicit-float-conversion)
+        return static_cast<float>(x);
     }
 
     /**
@@ -80,7 +80,7 @@ namespace Thrylos
         const auto window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
         double x, y;
         glfwGetCursorPos(window, &x, &y);
-        return y;  // NOLINT(clang-diagnostic-implicit-float-conversion)
+        return static_cast<float>(y);
     }
 
     /**
@@ -95,7 +95,7 @@ namespace Thrylos
     {
         POINT point;
         GetCursorPos(&point);
-        return {point.x, point.y};
+        return {static_cast<float>(point.x), static_cast<float>(point.y)};
     }
 
     /**
@@ -111,6 +111,6 @@ namespace Thrylos
         const auto window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
         double x, y;
         glfwGetCursorPos(window, &x, &y);
-        return {x, y};
+        return {static_cast<float>(x), static_cast<float>(y)};
     }
 }

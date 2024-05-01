@@ -25,7 +25,7 @@ namespace Thrylos
         StackLayers::iterator end() { return m_Layers.end(); }
     private:
         StackLayers m_Layers;
-        StackLayers::iterator m_LayerInsert;
+        unsigned int m_LayerInsertIndex = 0;
     };
     
 }

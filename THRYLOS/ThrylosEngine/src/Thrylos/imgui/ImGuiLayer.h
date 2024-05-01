@@ -12,15 +12,9 @@ namespace Thrylos
 
         void OnAttach() override;
         void OnDetach() override;
-        void OnUpdate() override;
-        void OnEvent(Event& event) override;
 
-        /**
-         * @brief This method returns the ImGuiContext associated with the current instance of the ImGuiLayer.
-         *
-         * @return A pointer to the ImGuiContext object.
-         */
-        ImGuiContext *GetContext() const { return m_Context; }
+        void Begin();
+        void End();
 
         /**
          * @brief This method is called before the main ImGui frame is drawn.
@@ -41,7 +35,7 @@ namespace Thrylos
          *
          * @note The base implementation of this method does nothing.
          */
-        virtual void OnDrawFrame() {}
+        void OnImGuiRender() override {}
 
         /**
          * @brief This method is called after the main ImGui frame is drawn.
@@ -53,22 +47,6 @@ namespace Thrylos
          * @note The base implementation of this method does nothing.
          */
         virtual void OnAfterDrawFrame() {}
-
-        /**
-         * @brief This method is called when an ImGuiContext object is created.
-         *
-         * This method is meant to be overridden by derived classes to handle any custom behavior when an ImGuiContext object is created.
-         * The derived class should implement any logic or operations that need to be performed when an ImGuiContext is created, such as setting up additional context-specific data or initializing
-         * ImGui widgets or settings.
-         *
-         * @param context A pointer to the ImGuiContext object that was created.
-         *
-         * @note The base implementation of this method does nothing.
-         */
-        virtual void OnContextCreated(ImGuiContext *context) {}
-
-    private:
-        ImGuiContext *m_Context = nullptr;
         
     };
 }

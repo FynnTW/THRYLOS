@@ -7,7 +7,8 @@
 
 extern Thrylos::Application* Thrylos::CreateApplication();  // NOLINT(readability-redundant-declaration)
 
-inline int main(int argc, int argv[])
+// ReSharper disable once CppNonInlineFunctionDefinitionInHeaderFile
+int main(int argc, int argv[])
 {
     Thrylos::Log::Init();
     LOG_CORE_INFO("Initialized log");

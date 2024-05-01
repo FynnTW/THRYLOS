@@ -1,7 +1,7 @@
 project "glad"
 	kind "StaticLib"
 	language "C"
-	buildoptions "/MT"
+    staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")

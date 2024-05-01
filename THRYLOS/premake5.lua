@@ -22,14 +22,15 @@ include "ThrylosEngine/3rd/imgui_premake.lua"
 
 project "ThrylosEngine"
     location "ThrylosEngine"
-    kind "SharedLib"
+    kind "StaticLib"
     language "C++"
+    cppdialect "C++20"
+    staticruntime "on"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
     pchheader "tpch.h"
-    
     pchsource "ThrylosEngine/src/tpch.cpp"
 
     files
@@ -66,7 +67,9 @@ project "ThrylosEngine"
         {
             "THRYLOS_PLATFORM_WINDOWS",
             "THRYLOS_BUILD_DLL",
+            "_SILENCE_STDEXT_ARR_ITERS_DEPRECATION_WARNING",
             "_WINDLL",
+            "_CRT_SECURE_NO_WARNINGS",
             "GLFW_INCLUDE_NONE"
         }
 
@@ -77,30 +80,38 @@ project "ThrylosEngine"
 
     filter "configurations:Debug"
         defines "THRYLOS_DEBUG"
-        symbols "On"
+        symbols "on"
 
     filter "configurations:Release"
         defines "THRYLOS_RELEASE"
-        optimize "On"
+        optimize "on"
 
     filter "configurations:Dist"
         defines "THRYLOS_DIST"
-        optimize "On"
+        optimize "on"
 
     filter {"system:windows", "configurations:Debug"}
-        buildoptions "/MDd"
+        defines "THRYLOS_DEBUG"
+        runtime "Debug"
+        symbols "On"
 
     filter {"system:windows", "configurations:Release"}
-        buildoptions "/MD"
+        defines "THRYLOS_RELEASE"
+        runtime "Release"
+        optimize "On"
 
     filter {"system:windows", "configurations:Dist"}
-        buildoptions "/MD"
+        defines "THRYLOS_DIST"
+        runtime "Release"
+        optimize "On"
 
 
 project "Sandbox"
     location "Sandbox"
     kind "ConsoleApp"
+    cppdialect "C++20"
     language "C++"
+    staticruntime "On"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -128,35 +139,28 @@ project "Sandbox"
     }
 
     filter "system:windows"
-        cppdialect "C++20"
-        staticruntime "On"
         systemversion "latest"
 
         defines
         {
-            "THRYLOS_PLATFORM_WINDOWS"
+            "THRYLOS_PLATFORM_WINDOWS",
+            "_SILENCE_STDEXT_ARR_ITERS_DEPRECATION_WARNING",
         }
 
     filter "configurations:Debug"
         defines "THRYLOS_DEBUG"
+        runtime "Debug"
         symbols "On"
 
     filter "configurations:Release"
         defines "THRYLOS_RELEASE"
+        runtime "Release"
         optimize "On"
 
     filter "configurations:Dist"
         defines "THRYLOS_DIST"
+        runtime "Release"
         optimize "On"
-
-    filter {"system:windows", "configurations:Debug"}
-        buildoptions "/MDd"
-
-    filter {"system:windows", "configurations:Release"}
-        buildoptions "/MD"
-
-    filter {"system:windows", "configurations:Dist"}
-        buildoptions "/MD"
 
 
 

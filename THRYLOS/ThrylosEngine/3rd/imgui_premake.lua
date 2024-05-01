@@ -1,8 +1,8 @@
 project "imgui"
 	kind "StaticLib"
 	language "C++"
-    staticruntime "off"
-	buildoptions "/MT"
+    staticruntime "on"
+    cppdialect "C++20"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -22,9 +22,13 @@ project "imgui"
 		"imgui/imgui_demo.cpp"
 	}
 
+	defines
+	{
+		"_CRT_SECURE_NO_WARNINGS"
+	}
+
 	filter "system:windows"
 		systemversion "latest"
-		cppdialect "C++17"
 
 	filter "system:linux"
 		pic "On"

@@ -6,18 +6,13 @@
 #include "Events/KeyEvent.h"
 #include "Events/MouseEvent.h"
 
-#include <glad/glad.h>
+#include "Platform/opengl/OpenGLContext.h"
 
 namespace Thrylos
 {
     //Static variable to keep track of whether GLFW has been initialized+
     static bool S_GLFW_INITIALIZED = false;
-
-    static void GLFWErrorCallback(const int error, const char* description)
-    {
-        LOG_CORE_ERROR("GLFW Error ({0}): {1}", error, description);
-    }
-
+    
     /**
      * @brief Window constructor
      * @param props Window Properties
@@ -63,18 +58,19 @@ namespace Thrylos
 
         LOG_CORE_INFO("Creating window {0} ({1}, {2})", props.title, props.width, props.height);
 
+
         //Only initialize GLFW if it has not been initialized
         if (!S_GLFW_INITIALIZED)
         {
-            int success = glfwInit();
-            THRYLOS_ASSERT(success, "Could not initialize GLFW!");
+            const int success = glfwInit();
+            THRYLOS_ASSERT(success, "Could not initialize GLFW!")
             S_GLFW_INITIALIZED = true;
         }
 
         m_Window = glfwCreateWindow(static_cast<int>(props.width), static_cast<int>(props.height), props.title.c_str(), nullptr, nullptr);
-        glfwMakeContextCurrent(m_Window);
-        int status = gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress));
-        THRYLOS_ASSERT(status, "Failed to initialize Glad!");
+        m_Context = new OpenGLContext(m_Window);
+        m_Context->Init();
+        
         glfwSetWindowUserPointer(m_Window, &m_Data);
         SetVSync(true);
         glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, const int width, const int height)
@@ -100,7 +96,7 @@ namespace Thrylos
             EventCallback(event);
         });
 
-        glfwSetKeyCallback(m_Window, [](GLFWwindow* window, const int key, [[maybe_unused]] const int scan_code, const int action, const int mods)
+        glfwSetKeyCallback(m_Window, [](GLFWwindow* window, const int key, [[maybe_unused]] const int scanCode, const int action, const int mods)
         {
             auto& [
                 Title,
@@ -162,7 +158,7 @@ namespace Thrylos
                 }
             });
 
-        glfwSetScrollCallback(m_Window, [](GLFWwindow* window, const double x_offset, const double y_offset)
+        glfwSetScrollCallback(m_Window, [](GLFWwindow* window, const double xOffset, const double yOffset)
         {
             auto& [
                 Title,
@@ -172,11 +168,11 @@ namespace Thrylos
                 EventCallback]
             = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
             
-            MouseScrolledEvent event(static_cast<float>(x_offset), static_cast<float>(y_offset));
+            MouseScrolledEvent event(static_cast<float>(xOffset), static_cast<float>(yOffset));
             EventCallback(event);
         });
 
-        glfwSetCursorPosCallback(m_Window, [](GLFWwindow* window, const double x_pos, const double y_pos)
+        glfwSetCursorPosCallback(m_Window, [](GLFWwindow* window, const double xPos, const double yPos)
         {
             auto& [
                 Title,
@@ -186,7 +182,7 @@ namespace Thrylos
                 EventCallback]
             = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
             
-            MouseMovedEvent event(static_cast<float>(x_pos), static_cast<float>(y_pos));
+            MouseMovedEvent event(static_cast<float>(xPos), static_cast<float>(yPos));
             EventCallback(event);
         });
     }
@@ -212,7 +208,7 @@ namespace Thrylos
     void WindowsWindow::OnUpdate()
     {
         glfwPollEvents();
-        glfwSwapBuffers(m_Window);
+        m_Context->SwapBuffers();
     }
 
     /**

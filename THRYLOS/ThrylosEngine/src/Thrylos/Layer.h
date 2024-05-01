@@ -16,7 +16,9 @@ namespace Thrylos
         virtual void OnUpdate() {}
         virtual void OnEvent(Event& event) {}
 
-        const std::string& GetName() const { return m_DebugName; }
+        virtual void OnImGuiRender() {}
+
+        [[nodiscard]] const std::string& GetName() const { return m_DebugName; }
     private:
         std::string m_DebugName;
     };

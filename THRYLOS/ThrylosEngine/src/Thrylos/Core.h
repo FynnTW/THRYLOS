@@ -1,12 +1,14 @@
 ﻿#pragma once
 
-#define THRYLOS_API _declspec(dllexport)
-
 #ifdef THRYLOS_PLATFORM_WINDOWS
-     #ifdef THRYLOS_BUILD_DLL
-          #define THRYLOS_API _declspec(dllexport)
+     #ifdef THRYLOS_DYNAMIC_LINK
+          #ifdef THRYLOS_BUILD_DLL
+               #define THRYLOS_API _declspec(dllexport)
+          #else
+               #define THRYLOS_API _declspec(dllimport)
+          #endif
      #else
-          #define THRYLOS_API _declspec(dllimport)
+          #define THRYLOS_API
      #endif
 #endif
 
