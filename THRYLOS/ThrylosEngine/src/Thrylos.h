@@ -7,3 +7,4 @@
 #include "Thrylos/LayerStack.h"
 #include "Thrylos/ImGui/ImGuiLayer.h"
 #include "Thrylos/Log.h"
+#include "Thrylos/Input.h"

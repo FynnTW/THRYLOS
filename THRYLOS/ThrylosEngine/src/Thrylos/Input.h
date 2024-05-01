@@ -5,8 +5,8 @@ namespace Thrylos
     class THRYLOS_API Input
     {
     public:
-        static bool IsKeyPressed(int keycode) { return m_SInstance->IsKeyPressedImpl(keycode); }
-        static bool IsMouseButtonPressed(int button) { return m_SInstance->IsMouseButtonPressedImpl(button); }
+        static bool IsKeyPressed(const int keycode) { return m_SInstance->IsKeyPressedImpl(keycode); }
+        static bool IsMouseButtonPressed(const int button) { return m_SInstance->IsMouseButtonPressedImpl(button); }
         static float GetMouseX() { return m_SInstance->GetMouseXImpl(); }
         static float GetMouseY() { return m_SInstance->GetMouseYImpl(); }
         static float GetWindowMouseX() { return m_SInstance->GetWindowMouseXImpl(); }

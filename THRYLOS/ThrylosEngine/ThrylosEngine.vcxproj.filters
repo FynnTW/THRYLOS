@@ -21,6 +21,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
@@ -55,6 +58,9 @@
     <ClInclude Include="src\Thrylos\Events\MouseEvent.h">
       <Filter>Thrylos\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Thrylos\Input.h">
+      <Filter>Thrylos</Filter>
+    </ClInclude>
     <ClInclude Include="src\Thrylos\Layer.h">
       <Filter>Thrylos</Filter>
     </ClInclude>
@@ -73,6 +79,9 @@
     <ClInclude Include="src\tpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>Platform\Windows</Filter>
     </ClCompile>
@@ -83,6 +92,9 @@
       <Filter>Platform\opengl</Filter>
     </ClCompile>
     <ClCompile Include="src\Thrylos\Application.cpp">
+      <Filter>Thrylos</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Thrylos\Input.cpp">
       <Filter>Thrylos</Filter>
     </ClCompile>
     <ClCompile Include="src\Thrylos\Layer.cpp">

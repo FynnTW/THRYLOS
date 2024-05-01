@@ -7,3 +7,6 @@
 [submodule "THRYLOS/ThrylosEngine/3rd/imgui"]
 	path = THRYLOS/ThrylosEngine/3rd/imgui
 	url = https://github.com/ocornut/imgui
+[submodule "THRYLOS/ThrylosEngine/3rd/glm"]
+	path = THRYLOS/ThrylosEngine/3rd/glm
+	url = https://github.com/g-truc/glm
