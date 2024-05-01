@@ -155,6 +155,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Platform\opengl\imgui_impl_glfw.h" />
     <ClInclude Include="src\Platform\opengl\imgui_impl_opengl3.h" />
@@ -167,6 +168,7 @@
     <ClInclude Include="src\Thrylos\Events\Event.h" />
     <ClInclude Include="src\Thrylos\Events\KeyEvent.h" />
     <ClInclude Include="src\Thrylos\Events\MouseEvent.h" />
+    <ClInclude Include="src\Thrylos\Input.h" />
     <ClInclude Include="src\Thrylos\Layer.h" />
     <ClInclude Include="src\Thrylos\LayerStack.h" />
     <ClInclude Include="src\Thrylos\Log.h" />
@@ -175,10 +177,12 @@
     <ClInclude Include="src\tpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Platform\opengl\imgui_impl_glfw.cpp" />
     <ClCompile Include="src\Platform\opengl\imgui_impl_opengl3.cpp" />
     <ClCompile Include="src\Thrylos\Application.cpp" />
+    <ClCompile Include="src\Thrylos\Input.cpp" />
     <ClCompile Include="src\Thrylos\Layer.cpp" />
     <ClCompile Include="src\Thrylos\LayerStack.cpp" />
     <ClCompile Include="src\Thrylos\Log.cpp" />

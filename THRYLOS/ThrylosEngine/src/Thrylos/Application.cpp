@@ -1,6 +1,9 @@
 ﻿#include "tpch.h"
 #include "Application.h"
 
+#include "imgui.h"
+#include "Platform/Windows/WindowsInput.h"
+
 namespace Thrylos
 {
 #define BIND_EVENT_FN(x) [this](auto& event) {return x(event);}
