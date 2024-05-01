@@ -7,16 +7,31 @@
     <Filter Include="Platform\Windows">
       <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platform\opengl">
+      <UniqueIdentifier>{7E95D167-EA20-3F2C-F331-C2205F3C9B2C}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Thrylos">
       <UniqueIdentifier>{9A2BC740-060B-46DC-0F23-D1B27B81AC3D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Thrylos\Events">
       <UniqueIdentifier>{3E86B8B4-2A54-ACBA-13E8-1CE1FF54881F}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Thrylos\imgui">
+      <UniqueIdentifier>{84041046-F0C4-8B7C-B9FF-D4F9257FD058}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\opengl\imgui_impl_glfw.h">
+      <Filter>Platform\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\opengl\imgui_impl_opengl3.h">
+      <Filter>Platform\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\opengl\imgui_impl_opengl3_loader.h">
+      <Filter>Platform\opengl</Filter>
     </ClInclude>
     <ClInclude Include="src\Thrylos.h" />
     <ClInclude Include="src\Thrylos\Application.h">
@@ -52,11 +67,20 @@
     <ClInclude Include="src\Thrylos\Window.h">
       <Filter>Thrylos</Filter>
     </ClInclude>
+    <ClInclude Include="src\Thrylos\imgui\ImGuiLayer.h">
+      <Filter>Thrylos\imgui</Filter>
+    </ClInclude>
     <ClInclude Include="src\tpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\opengl\imgui_impl_glfw.cpp">
+      <Filter>Platform\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\opengl\imgui_impl_opengl3.cpp">
+      <Filter>Platform\opengl</Filter>
     </ClCompile>
     <ClCompile Include="src\Thrylos\Application.cpp">
       <Filter>Thrylos</Filter>
@@ -69,6 +93,9 @@
     </ClCompile>
     <ClCompile Include="src\Thrylos\Log.cpp">
       <Filter>Thrylos</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Thrylos\imgui\ImGuiLayer.cpp">
+      <Filter>Thrylos\imgui</Filter>
     </ClCompile>
     <ClCompile Include="src\tpch.cpp" />
   </ItemGroup>

@@ -22,16 +22,20 @@ namespace Thrylos
          * @brief Run the application
          */
         void Run();
+        static Application& Get() { return *m_SInstance; }
 
         //onEvent
         void OnEvent(Event& e);
         void PushLayer(Layer* layer);
         void PushOverlay(Layer* overlay);
+        
+        [[nodiscard]] Window& GetWindow() const { return *m_Window; }
     private:
         bool OnWindowClose(WindowCloseEvent& e);
         std::unique_ptr<Window> m_Window;
         bool m_Running = true;
         LayerStack m_LayerStack;
+        static Application* m_SInstance;
     };
 
     /**

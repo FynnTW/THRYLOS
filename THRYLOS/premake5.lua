@@ -13,9 +13,11 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "ThrylosEngine/3rd/glfw/include"
 IncludeDir["glad"] = "ThrylosEngine/3rd/glad/include"
+IncludeDir["imgui"] = "ThrylosEngine/3rd/imgui"
 
 include "ThrylosEngine/3rd/glfw_premake.lua"
 include "ThrylosEngine/3rd/glad_premake.lua"
+include "ThrylosEngine/3rd/imgui_premake.lua"
 
 project "ThrylosEngine"
     location "ThrylosEngine"
@@ -41,13 +43,15 @@ project "ThrylosEngine"
         "%{prj.name}/src/Thrylos",
         "%{prj.name}/3rd/spdlog/include",
         "%{IncludeDir.GLFW}",
-        "%{IncludeDir.glad}"
+        "%{IncludeDir.glad}",
+        "%{IncludeDir.imgui}"
     }
 
     links
     {
         "GLFW",
         "glad",
+        "imgui",
         "opengl32.lib",
     }
 
@@ -110,12 +114,14 @@ project "Sandbox"
         "ThrylosEngine/3rd/spdlog/include",
         "ThrylosEngine/src",
         "%{IncludeDir.GLFW}",
-        "%{IncludeDir.Glad}"
+        "%{IncludeDir.Glad}",
+        "%{IncludeDir.imgui}"
     }
 
     links
     {
-        "ThrylosEngine"
+        "ThrylosEngine",
+        "imgui",
     }
 
     filter "system:windows"

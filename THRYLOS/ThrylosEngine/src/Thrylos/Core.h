@@ -10,8 +10,11 @@
      #endif
 #endif
 
-
 #define BIT(x) (1 << (x))
+
+#ifdef THRYLOS_DEBUG
+     #define THRYLOS_ENABLE_ASSERTS
+#endif
 
 #ifdef THRYLOS_ENABLE_ASSERTS
      #define THRYLOS_ASSERT(x, ...) { if(!(x)) { LOG_CLIENT_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }

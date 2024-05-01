@@ -4,3 +4,6 @@
 [submodule "THRYLOS/ThrylosEngine/3rd/glfw"]
 	path = THRYLOS/ThrylosEngine/3rd/glfw
 	url = https://github.com/glfw/glfw
+[submodule "THRYLOS/ThrylosEngine/3rd/imgui"]
+	path = THRYLOS/ThrylosEngine/3rd/imgui
+	url = https://github.com/ocornut/imgui

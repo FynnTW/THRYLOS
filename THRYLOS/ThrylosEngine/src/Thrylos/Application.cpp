@@ -5,6 +5,9 @@ namespace Thrylos
 {
 #define BIND_EVENT_FN(x) [this](auto& event) {return x(event);}
 
+    // ReSharper disable once CppInconsistentNaming
+    Application* Application::m_SInstance = nullptr;
+    
     /**
      * @brief Default constructor for the Application class.
      *
@@ -16,6 +19,9 @@ namespace Thrylos
      */
     Application::Application()
     {
+        THRYLOS_ASSERT(!m_SInstance, "Application already exists!");
+        m_SInstance = this;
+        
         m_Window = std::unique_ptr<Window>(Window::Create());
         m_Window->SetEventCallback(BIND_EVENT_FN(Application::OnEvent));
     }
@@ -43,6 +49,7 @@ namespace Thrylos
     void Application::PushLayer(Layer* layer)
     {
         m_LayerStack.PushLayer(layer);
+        layer->OnAttach();
     }
 
     /**
@@ -57,6 +64,7 @@ namespace Thrylos
     void Application::PushOverlay(Layer* overlay)
     {
         m_LayerStack.PushOverlay(overlay);
+        overlay->OnAttach();
     }
 
     /**
