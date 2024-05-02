@@ -26,7 +26,7 @@ namespace Thrylos
          * - VertexArray
          * - IndexBuffer
          */
-        static void DrawIndexed(const std::shared_ptr<VertexArray>& vertexArray)
+        static void DrawIndexed(const VertexArrayRef& vertexArray)
         {
             m_SRendererApi->DrawIndexed(vertexArray);
         }

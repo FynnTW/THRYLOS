@@ -1,6 +1,8 @@
 ﻿#pragma once
 #include "Thrylos/Renderer/Buffer.h"
 
+
+
 namespace Thrylos
 {
     /**
@@ -42,7 +44,7 @@ namespace Thrylos
          *
          * @see VertexBuffer, VertexBuffer::Create(), VertexBuffer::Bind(), VertexBuffer::SetLayout()
          */
-        virtual void AddVertexBuffer(const std::shared_ptr<VertexBuffer>& vertexBuffer) = 0;
+        virtual void AddVertexBuffer(const VertexBufferRef& vertexBuffer) = 0;
 
         /**
          * @brief Sets the index buffer for the vertex array.
@@ -55,7 +57,7 @@ namespace Thrylos
          *
          * @see VertexArray, IndexBuffer
          */
-        virtual void SetIndexBuffer(const std::shared_ptr<IndexBuffer>& indexBuffer) = 0;
+        virtual void SetIndexBuffer(const IndexBufferRef& indexBuffer) = 0;
 
         /**
          * @brief Gets the vertex buffers associated with the vertex array.
@@ -68,7 +70,7 @@ namespace Thrylos
          *
          * @see VertexArray, VertexBuffer, VertexArray::AddVertexBuffer()
          */
-        [[nodiscard]] virtual const std::vector<std::shared_ptr<VertexBuffer>>& GetVertexBuffers() const = 0;
+        [[nodiscard]] virtual const std::vector<VertexBufferRef>& GetVertexBuffers() const = 0;
 
         /**
          * @brief Gets the index buffer associated with the vertex array.
@@ -81,7 +83,7 @@ namespace Thrylos
          *
          * @see VertexArray, IndexBuffer, VertexArray::SetIndexBuffer()
          */
-        [[nodiscard]] virtual const std::shared_ptr<IndexBuffer>& GetIndexBuffer() const = 0;
+        [[nodiscard]] virtual const IndexBufferRef& GetIndexBuffer() const = 0;
 
 
         /**
@@ -96,8 +98,8 @@ namespace Thrylos
          * @see Renderer::GetRendererApi(), OpenGLVertexArray
          */
         static VertexArray* Create();
-        
-    
     };
+
+     typedef std::shared_ptr<VertexArray> VertexArrayRef;
     
 }

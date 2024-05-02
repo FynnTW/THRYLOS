@@ -14,16 +14,7 @@ namespace Thrylos
     class Shader
     {
     public:
-        /**
-         * @brief Constructs a Shader object.
-         *
-         * This constructor creates a Shader object and compiles the vertex and fragment shaders.
-         *
-         * @param vertexSrc The source code of the vertex shader.
-         * @param fragmentSrc The source code of the fragment shader.
-         */
-        Shader(const std::string& vertexSrc, const std::string& fragmentSrc);
-        ~Shader();
+        ~Shader() = default;
 
         /**
          * @brief Binds the shader program for use in rendering.
@@ -31,19 +22,16 @@ namespace Thrylos
          * This method sets the currently active shader program to the one represented by the Shader object.
          * It allows the shader program to be used in rendering operations.
          */
-        void Bind() const;
+        virtual void Bind() const = 0;
 
         /**
          * @brief Unbinds the shader program.
          *
          * This method unbinds the currently active shader program, allowing other shader programs to be used in rendering operations.
          */
-        void Unbind() const;
+        virtual void Unbind() const = 0;
 
+        static Shader* Create(const std::string& vertexSrc, const std::string& fragmentSrc);
 
-        void UploadUniformMat4(const std::string& name, const glm::mat4& matrix);
-        
-    private:
-        uint32_t m_RendererId;
     };
 }

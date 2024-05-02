@@ -20,12 +20,12 @@ namespace Thrylos
          * @brief Get the core logger
          * @return The core logger
          */
-        static std::shared_ptr<spdlog::logger>& GetCoreLogger() { return m_CoreLogger; }
+        static Ref<spdlog::logger>& GetCoreLogger() { return m_CoreLogger; }
         /**
          * @brief Get the client logger
          * @return The client logger
          */
-        static std::shared_ptr<spdlog::logger>& GetClientLogger() { return m_ClientLogger; }
+        static Ref<spdlog::logger>& GetClientLogger() { return m_ClientLogger; }
 
         /**
          * @brief Set the core logging level
@@ -40,8 +40,8 @@ namespace Thrylos
         static void SetClientLogLevel(spdlog::level::level_enum level);
 
     private:
-        static std::shared_ptr<spdlog::logger> m_CoreLogger;
-        static std::shared_ptr<spdlog::logger> m_ClientLogger;
+        static Ref<spdlog::logger> m_CoreLogger;
+        static Ref<spdlog::logger> m_ClientLogger;
     
     };
 }

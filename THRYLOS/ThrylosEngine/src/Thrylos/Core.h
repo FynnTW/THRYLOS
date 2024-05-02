@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include <memory>
 
 #ifdef THRYLOS_PLATFORM_WINDOWS
      #ifdef THRYLOS_DYNAMIC_LINK
@@ -27,3 +28,25 @@
      #define THRYLOS_ASSERT(x, ...)
      #define THRYLOS_CORE_ASSERT(x, ...)
 #endif
+
+namespace Thrylos
+{
+     template<typename T>
+     using Scope = std::unique_ptr<T>;
+
+     template<typename T>
+     using Ref = std::shared_ptr<T>;
+
+     template <typename T, typename ... Args>
+     constexpr Scope<T> createScope(Args&& ... args)
+     {
+          return std::make_unique<T>(std::forward<Args>(args)...);
+     }
+
+     template <typename T, typename ... Args>
+     constexpr Ref<T> createRef(Args&& ... args)
+     {
+          return std::make_shared<T>(std::forward<Args>(args)...);
+     }
+     
+}

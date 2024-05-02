@@ -5,7 +5,7 @@
 
 namespace Thrylos
 {
-    void OpenGLRendererApi::DrawIndexed(const std::shared_ptr<VertexArray>& vertexArray)
+    void OpenGLRendererApi::DrawIndexed(const VertexArrayRef& vertexArray)
     {
         glDrawElements(GL_TRIANGLES, vertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
     }

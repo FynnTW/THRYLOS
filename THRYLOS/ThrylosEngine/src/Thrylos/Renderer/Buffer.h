@@ -367,5 +367,8 @@ namespace Thrylos
          */
         static IndexBuffer* Create(const uint32_t* indices, uint32_t count);
     };
+ 
+    typedef std::shared_ptr<IndexBuffer> IndexBufferRef;
+    typedef std::shared_ptr<VertexBuffer> VertexBufferRef;
     
 }

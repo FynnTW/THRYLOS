@@ -25,7 +25,7 @@ namespace Thrylos
         glBindVertexArray(0);
     }
 
-    void OpenGLVertexArray::AddVertexBuffer(const std::shared_ptr<VertexBuffer>& vertexBuffer)
+    void OpenGLVertexArray::AddVertexBuffer(const VertexBufferRef& vertexBuffer)
     {
         THRYLOS_ASSERT(!vertexBuffer->GetLayout().GetElements().empty(), "Vertex Buffer has no layout!")
         
@@ -35,7 +35,7 @@ namespace Thrylos
         m_VertexBuffers.push_back(vertexBuffer);
     }
 
-    void OpenGLVertexArray::SetIndexBuffer(const std::shared_ptr<IndexBuffer>& indexBuffer)
+    void OpenGLVertexArray::SetIndexBuffer(const IndexBufferRef& indexBuffer)
     {
         glBindVertexArray(m_RendererId);
         indexBuffer->Bind();

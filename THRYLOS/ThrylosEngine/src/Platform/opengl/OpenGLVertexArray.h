@@ -16,15 +16,15 @@ namespace Thrylos
         void Bind() const override;
         void Unbind() const override;
         
-        void AddVertexBuffer(const std::shared_ptr<VertexBuffer>& vertexBuffer) override;
-        void SetIndexBuffer(const std::shared_ptr<IndexBuffer>& indexBuffer) override;
+        void AddVertexBuffer(const VertexBufferRef& vertexBuffer) override;
+        void SetIndexBuffer(const IndexBufferRef& indexBuffer) override;
 
-        [[nodiscard]] const std::vector<std::shared_ptr<VertexBuffer>>& GetVertexBuffers() const override { return m_VertexBuffers; }
-        [[nodiscard]] const std::shared_ptr<IndexBuffer>& GetIndexBuffer() const override { return m_IndexBuffer; }
+        [[nodiscard]] const std::vector<VertexBufferRef>& GetVertexBuffers() const override { return m_VertexBuffers; }
+        [[nodiscard]] const IndexBufferRef& GetIndexBuffer() const override { return m_IndexBuffer; }
 
     private:
-        std::vector<std::shared_ptr<VertexBuffer>> m_VertexBuffers;
-        std::shared_ptr<IndexBuffer> m_IndexBuffer;
+        std::vector<VertexBufferRef> m_VertexBuffers;
+        IndexBufferRef m_IndexBuffer;
         uint32_t m_RendererId;
     
     };
