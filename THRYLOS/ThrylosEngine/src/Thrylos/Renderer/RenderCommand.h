@@ -65,6 +65,11 @@ namespace Thrylos
             m_SRendererApi->Clear();
         }
 
+        static void Init()
+        {
+            m_SRendererApi->Init();
+        }
+
     private:
         static RendererApi* m_SRendererApi;
     

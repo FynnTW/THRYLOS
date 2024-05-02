@@ -14,6 +14,7 @@
 #include "Thrylos/Renderer/VertexArray.h"
 #include "Thrylos/Renderer/OrtographicCamera.h"
 #include "Thrylos/Renderer/Shader.h"
+#include "Thrylos/Renderer/Texture.h"
 #include "Thrylos/Renderer/RenderCommand.h"
 #include "Thrylos/Events/KeyCodes.h"
 #include "Thrylos/Core/TimeStep.h"

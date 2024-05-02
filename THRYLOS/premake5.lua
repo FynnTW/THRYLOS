@@ -14,6 +14,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "ThrylosEngine/3rd/glfw/include"
 IncludeDir["glad"] = "ThrylosEngine/3rd/glad/include"
 IncludeDir["imgui"] = "ThrylosEngine/3rd/imgui"
+IncludeDir["stb_image"] = "ThrylosEngine/3rd/stb_image"
 IncludeDir["glm"] = "ThrylosEngine/3rd/glm"
 
 include "ThrylosEngine/3rd/glfw_premake.lua"
@@ -36,7 +37,9 @@ project "ThrylosEngine"
     files
     {
         "%{prj.name}/src/**.h",
-        "%{prj.name}/src/**.cpp"
+        "%{prj.name}/src/**.cpp",
+        "%{prj.name}/3rd/stb_image/**.h",
+        "%{prj.name}/3rd/stb_image/**.cpp",
     }
 
     includedirs
@@ -47,6 +50,7 @@ project "ThrylosEngine"
         "%{IncludeDir.GLFW}",
         "%{IncludeDir.glad}",
         "%{IncludeDir.imgui}",
+        "%{IncludeDir.stb_image}",
         "%{IncludeDir.glm}"
     }
 
@@ -129,6 +133,7 @@ project "Sandbox"
         "%{IncludeDir.GLFW}",
         "%{IncludeDir.Glad}",
         "%{IncludeDir.glm}",
+        "%{IncludeDir.stb_image}",
         "%{IncludeDir.imgui}"
     }
 

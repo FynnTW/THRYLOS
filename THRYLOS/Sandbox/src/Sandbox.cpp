@@ -4,6 +4,7 @@
 #include "Thrylos.h"
 #include "Platform/opengl/OpenGLShader.h"
 #include "Thrylos/Events/KeyEvent.h"
+#include "Thrylos/Renderer/Texture.h"
 
 using namespace Thrylos;
 
@@ -63,37 +64,11 @@ public:
 
         m_Shader.reset(Shader::Create(vertexSrc, fragmentSrc));
 
-        const std::string vertexSrcTex = R"(
-			#version 330 core
-			
-			layout(location = 0) in vec3 a_Position;
-            layout(location = 1) in vec2 a_TexCoord;
-            
-            uniform mat4 u_ViewProjection;
-            uniform mat4 u_Transform;
+        m_TextureShader.reset(Shader::Create("assets/shaders/texture.glsl"));
+        m_Texture = Texture2D::Create("assets/test.png");
 
-            out vec2 v_TexCoord;
-
-			void main()
-			{
-                v_TexCoord = a_TexCoord;
-				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);	
-			}
-		)";
-        const std::string fragmentSrcTex = R"(
-			#version 330 core
-			
-			layout(location = 0) out vec4 color;
-            in vec2 v_TexCoord;
-            
-            uniform vec3 u_Color;
-			void main()
-			{
-				color = vec4(v_TexCoord, 0.0, 1.0);
-			}
-		)";
-
-        m_TextureShader.reset(Shader::Create(vertexSrcTex, fragmentSrcTex));
+        std::dynamic_pointer_cast<OpenGLShader>(m_TextureShader)->Bind();
+        std::dynamic_pointer_cast<OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
     }
 
     void OnUpdate(TimeStep ts) override
@@ -107,6 +82,7 @@ public:
         const glm::mat4 transform = translate(glm::mat4(1.0f), m_SquarePosition);
 
         std::dynamic_pointer_cast<OpenGLShader>(m_TextureShader)->Bind(transform);
+        m_Texture->Bind();
         Renderer::Submit(m_VertexArray);
 
         Renderer::EndScene();
@@ -158,6 +134,7 @@ public:
     }
 private:
     OrtographicCamera m_Camera;
+    Ref<Texture2D> m_Texture;
     Ref<Shader> m_Shader, m_TextureShader;
     VertexArrayRef m_VertexArray;
     glm::vec3 m_SquarePosition = { 0.0f, 0.0f, 0.0f };

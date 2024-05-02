@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include <glm/fwd.hpp>
+#include <unordered_map>
 
 #include "Thrylos/Renderer/Shader.h"
 
@@ -17,6 +18,7 @@ namespace Thrylos
          * @param fragmentSrc The source code of the fragment shader.
          */
         OpenGLShader(const std::string& vertexSrc, const std::string& fragmentSrc);
+        OpenGLShader(const std::string&  filePath);
         virtual ~OpenGLShader();
 
         void Bind() const override;
@@ -34,6 +36,9 @@ namespace Thrylos
         void UploadUniformInt3(const std::string& name, const glm::ivec3& values) const;
         void UploadUniformInt4(const std::string& name, const glm::ivec4& values) const;
     protected:
+        static std::string ReadFile(const std::string& filePath);
+        static std::unordered_map<uint32_t, std::string>  PreProcess(const std::string& source);
+        void CompileShader(std::unordered_map<uint32_t, std::string>& shaderSources);
         uint32_t m_RendererId;
     };
 }

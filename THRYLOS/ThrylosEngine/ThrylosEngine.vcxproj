@@ -77,7 +77,7 @@
       <PrecompiledHeaderFile>tpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>THRYLOS_PLATFORM_WINDOWS;THRYLOS_BUILD_DLL;_SILENCE_STDEXT_ARR_ITERS_DEPRECATION_WARNING;_WINDLL;_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;THRYLOS_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;src\Thrylos;3rd\spdlog\include;3rd\glfw\include;3rd\glad\include;3rd\imgui;3rd\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;src\Thrylos;3rd\spdlog\include;3rd\glfw\include;3rd\glad\include;3rd\imgui;3rd\stb_image;3rd\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -101,7 +101,7 @@
       <PrecompiledHeaderFile>tpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>THRYLOS_PLATFORM_WINDOWS;THRYLOS_BUILD_DLL;_SILENCE_STDEXT_ARR_ITERS_DEPRECATION_WARNING;_WINDLL;_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;THRYLOS_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;src\Thrylos;3rd\spdlog\include;3rd\glfw\include;3rd\glad\include;3rd\imgui;3rd\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;src\Thrylos;3rd\spdlog\include;3rd\glfw\include;3rd\glad\include;3rd\imgui;3rd\stb_image;3rd\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -129,7 +129,7 @@
       <PrecompiledHeaderFile>tpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>THRYLOS_PLATFORM_WINDOWS;THRYLOS_BUILD_DLL;_SILENCE_STDEXT_ARR_ITERS_DEPRECATION_WARNING;_WINDLL;_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;THRYLOS_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;src\Thrylos;3rd\spdlog\include;3rd\glfw\include;3rd\glad\include;3rd\imgui;3rd\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;src\Thrylos;3rd\spdlog\include;3rd\glfw\include;3rd\glad\include;3rd\imgui;3rd\stb_image;3rd\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -152,13 +152,15 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="3rd\stb_image\stb_image.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Platform\opengl\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\opengl\OpenGLContext.h" />
     <ClInclude Include="src\Platform\opengl\OpenGLRendererApi.h" />
     <ClInclude Include="src\Platform\opengl\OpenGLShader.h" />
+    <ClInclude Include="src\Platform\opengl\OpenGLTexture.h" />
     <ClInclude Include="src\Platform\opengl\OpenGLVertexArray.h" />
-    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
-    <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Platform\opengl\imgui_impl_glfw.h" />
     <ClInclude Include="src\Platform\opengl\imgui_impl_opengl3.h" />
     <ClInclude Include="src\Platform\opengl\imgui_impl_opengl3_loader.h" />
@@ -183,19 +185,22 @@
     <ClInclude Include="src\Thrylos\Renderer\Renderer.h" />
     <ClInclude Include="src\Thrylos\Renderer\RendererApi.h" />
     <ClInclude Include="src\Thrylos\Renderer\Shader.h" />
+    <ClInclude Include="src\Thrylos\Renderer\Texture.h" />
     <ClInclude Include="src\Thrylos\Renderer\VertexArray.h" />
     <ClInclude Include="src\Thrylos\Window.h" />
     <ClInclude Include="src\Thrylos\imgui\ImGuiLayer.h" />
     <ClInclude Include="src\tpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="3rd\stb_image\stb_image.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Platform\opengl\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\opengl\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\opengl\OpenGLRendererApi.cpp" />
     <ClCompile Include="src\Platform\opengl\OpenGLShader.cpp" />
+    <ClCompile Include="src\Platform\opengl\OpenGLTexture.cpp" />
     <ClCompile Include="src\Platform\opengl\OpenGLVertexArray.cpp" />
-    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
-    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Platform\opengl\imgui_impl_glfw.cpp" />
     <ClCompile Include="src\Platform\opengl\imgui_impl_opengl3.cpp" />
     <ClCompile Include="src\Thrylos\Application.cpp" />
@@ -203,14 +208,15 @@
     <ClCompile Include="src\Thrylos\Layer.cpp" />
     <ClCompile Include="src\Thrylos\LayerStack.cpp" />
     <ClCompile Include="src\Thrylos\Log.cpp" />
-    <ClCompile Include="src\Thrylos\imgui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Thrylos\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Thrylos\Renderer\OrtographicCamera.cpp" />
     <ClCompile Include="src\Thrylos\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Thrylos\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Thrylos\Renderer\RendererApi.cpp" />
     <ClCompile Include="src\Thrylos\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Thrylos\Renderer\Texture.cpp" />
     <ClCompile Include="src\Thrylos\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\Thrylos\imgui\ImGuiLayer.cpp" />
     <ClCompile Include="src\tpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

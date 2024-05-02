@@ -7,7 +7,7 @@ namespace Thrylos
     {
     public:
         virtual void DrawIndexed(const VertexArrayRef& vertexArray) override;
-        //void Init() override;
+        void Init() override;
         void SetClearColor(const glm::vec4& color) override;
         void Clear() override;
     };

@@ -1,114 +1,234 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Platform">
-      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    <Filter Include="3rd">
+      <UniqueIdentifier>{EE9A870B-5AA4-877C-E31F-9E7C4F28937C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Platform\Windows">
-      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    <Filter Include="3rd\stb_image">
+      <UniqueIdentifier>{084D3B9E-740D-B7D4-3D48-0052A9C7FBB0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Platform\opengl">
-      <UniqueIdentifier>{7E95D167-EA20-3F2C-F331-C2205F3C9B2C}</UniqueIdentifier>
+    <Filter Include="src">
+      <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Thrylos">
-      <UniqueIdentifier>{9A2BC740-060B-46DC-0F23-D1B27B81AC3D}</UniqueIdentifier>
+    <Filter Include="src\Platform">
+      <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Thrylos\Events">
-      <UniqueIdentifier>{3E86B8B4-2A54-ACBA-13E8-1CE1FF54881F}</UniqueIdentifier>
+    <Filter Include="src\Platform\Windows">
+      <UniqueIdentifier>{5B054582-4794-CE4B-F0B2-E246DC20DFF1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Thrylos\imgui">
-      <UniqueIdentifier>{84041046-F0C4-8B7C-B9FF-D4F9257FD058}</UniqueIdentifier>
+    <Filter Include="src\Platform\opengl">
+      <UniqueIdentifier>{95BC3982-011E-1790-8A8B-5D42F6EB4D4F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Thrylos">
+      <UniqueIdentifier>{B12B014A-1DE1-793F-A6D5-7316128A7043}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Thrylos\Core">
+      <UniqueIdentifier>{A946CEA0-953F-EDF2-BE71-D277AAC9CCFE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Thrylos\Events">
+      <UniqueIdentifier>{75A69C12-618A-5D68-CAEA-57BBB6ED47EA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Thrylos\Renderer">
+      <UniqueIdentifier>{77265B23-63B5-E4EC-0CD4-F8E7F841F592}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Thrylos\imgui">
+      <UniqueIdentifier>{DB7945BD-4790-4353-9007-CF74FC5C14DB}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="3rd\stb_image\stb_image.h">
+      <Filter>3rd\stb_image</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
-      <Filter>Platform\Windows</Filter>
+      <Filter>src\Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
-      <Filter>Platform\Windows</Filter>
+      <Filter>src\Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\opengl\OpenGLBuffer.h">
+      <Filter>src\Platform\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\opengl\OpenGLContext.h">
+      <Filter>src\Platform\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\opengl\OpenGLRendererApi.h">
+      <Filter>src\Platform\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\opengl\OpenGLShader.h">
+      <Filter>src\Platform\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\opengl\OpenGLTexture.h">
+      <Filter>src\Platform\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\opengl\OpenGLVertexArray.h">
+      <Filter>src\Platform\opengl</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\opengl\imgui_impl_glfw.h">
-      <Filter>Platform\opengl</Filter>
+      <Filter>src\Platform\opengl</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\opengl\imgui_impl_opengl3.h">
-      <Filter>Platform\opengl</Filter>
+      <Filter>src\Platform\opengl</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\opengl\imgui_impl_opengl3_loader.h">
-      <Filter>Platform\opengl</Filter>
+      <Filter>src\Platform\opengl</Filter>
     </ClInclude>
-    <ClInclude Include="src\Thrylos.h" />
+    <ClInclude Include="src\Thrylos.h">
+      <Filter>src</Filter>
+    </ClInclude>
     <ClInclude Include="src\Thrylos\Application.h">
-      <Filter>Thrylos</Filter>
+      <Filter>src\Thrylos</Filter>
     </ClInclude>
     <ClInclude Include="src\Thrylos\Core.h">
-      <Filter>Thrylos</Filter>
+      <Filter>src\Thrylos</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Thrylos\Core\TimeStep.h">
+      <Filter>src\Thrylos\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Thrylos\EntryPoint.h">
-      <Filter>Thrylos</Filter>
+      <Filter>src\Thrylos</Filter>
     </ClInclude>
     <ClInclude Include="src\Thrylos\Events\ApplicationEvent.h">
-      <Filter>Thrylos\Events</Filter>
+      <Filter>src\Thrylos\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Thrylos\Events\Event.h">
-      <Filter>Thrylos\Events</Filter>
+      <Filter>src\Thrylos\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Thrylos\Events\KeyCodes.h">
+      <Filter>src\Thrylos\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Thrylos\Events\KeyEvent.h">
-      <Filter>Thrylos\Events</Filter>
+      <Filter>src\Thrylos\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Thrylos\Events\MouseEvent.h">
-      <Filter>Thrylos\Events</Filter>
+      <Filter>src\Thrylos\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Thrylos\Input.h">
-      <Filter>Thrylos</Filter>
+      <Filter>src\Thrylos</Filter>
     </ClInclude>
     <ClInclude Include="src\Thrylos\Layer.h">
-      <Filter>Thrylos</Filter>
+      <Filter>src\Thrylos</Filter>
     </ClInclude>
     <ClInclude Include="src\Thrylos\LayerStack.h">
-      <Filter>Thrylos</Filter>
+      <Filter>src\Thrylos</Filter>
     </ClInclude>
     <ClInclude Include="src\Thrylos\Log.h">
-      <Filter>Thrylos</Filter>
+      <Filter>src\Thrylos</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Thrylos\Renderer\Buffer.h">
+      <Filter>src\Thrylos\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Thrylos\Renderer\GraphicsContext.h">
+      <Filter>src\Thrylos\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Thrylos\Renderer\OrtographicCamera.h">
+      <Filter>src\Thrylos\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Thrylos\Renderer\RenderCommand.h">
+      <Filter>src\Thrylos\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Thrylos\Renderer\Renderer.h">
+      <Filter>src\Thrylos\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Thrylos\Renderer\RendererApi.h">
+      <Filter>src\Thrylos\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Thrylos\Renderer\Shader.h">
+      <Filter>src\Thrylos\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Thrylos\Renderer\Texture.h">
+      <Filter>src\Thrylos\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Thrylos\Renderer\VertexArray.h">
+      <Filter>src\Thrylos\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Thrylos\Window.h">
-      <Filter>Thrylos</Filter>
+      <Filter>src\Thrylos</Filter>
     </ClInclude>
     <ClInclude Include="src\Thrylos\imgui\ImGuiLayer.h">
-      <Filter>Thrylos\imgui</Filter>
+      <Filter>src\Thrylos\imgui</Filter>
     </ClInclude>
-    <ClInclude Include="src\tpch.h" />
+    <ClInclude Include="src\tpch.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="3rd\stb_image\stb_image.cpp">
+      <Filter>3rd\stb_image</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
-      <Filter>Platform\Windows</Filter>
+      <Filter>src\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
-      <Filter>Platform\Windows</Filter>
+      <Filter>src\Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\opengl\OpenGLBuffer.cpp">
+      <Filter>src\Platform\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\opengl\OpenGLContext.cpp">
+      <Filter>src\Platform\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\opengl\OpenGLRendererApi.cpp">
+      <Filter>src\Platform\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\opengl\OpenGLShader.cpp">
+      <Filter>src\Platform\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\opengl\OpenGLTexture.cpp">
+      <Filter>src\Platform\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\opengl\OpenGLVertexArray.cpp">
+      <Filter>src\Platform\opengl</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\opengl\imgui_impl_glfw.cpp">
-      <Filter>Platform\opengl</Filter>
+      <Filter>src\Platform\opengl</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\opengl\imgui_impl_opengl3.cpp">
-      <Filter>Platform\opengl</Filter>
+      <Filter>src\Platform\opengl</Filter>
     </ClCompile>
     <ClCompile Include="src\Thrylos\Application.cpp">
-      <Filter>Thrylos</Filter>
+      <Filter>src\Thrylos</Filter>
     </ClCompile>
     <ClCompile Include="src\Thrylos\Input.cpp">
-      <Filter>Thrylos</Filter>
+      <Filter>src\Thrylos</Filter>
     </ClCompile>
     <ClCompile Include="src\Thrylos\Layer.cpp">
-      <Filter>Thrylos</Filter>
+      <Filter>src\Thrylos</Filter>
     </ClCompile>
     <ClCompile Include="src\Thrylos\LayerStack.cpp">
-      <Filter>Thrylos</Filter>
+      <Filter>src\Thrylos</Filter>
     </ClCompile>
     <ClCompile Include="src\Thrylos\Log.cpp">
-      <Filter>Thrylos</Filter>
+      <Filter>src\Thrylos</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Thrylos\Renderer\Buffer.cpp">
+      <Filter>src\Thrylos\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Thrylos\Renderer\OrtographicCamera.cpp">
+      <Filter>src\Thrylos\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Thrylos\Renderer\RenderCommand.cpp">
+      <Filter>src\Thrylos\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Thrylos\Renderer\Renderer.cpp">
+      <Filter>src\Thrylos\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Thrylos\Renderer\RendererApi.cpp">
+      <Filter>src\Thrylos\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Thrylos\Renderer\Shader.cpp">
+      <Filter>src\Thrylos\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Thrylos\Renderer\Texture.cpp">
+      <Filter>src\Thrylos\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Thrylos\Renderer\VertexArray.cpp">
+      <Filter>src\Thrylos\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Thrylos\imgui\ImGuiLayer.cpp">
-      <Filter>Thrylos\imgui</Filter>
+      <Filter>src\Thrylos\imgui</Filter>
     </ClCompile>
-    <ClCompile Include="src\tpch.cpp" />
+    <ClCompile Include="src\tpch.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
