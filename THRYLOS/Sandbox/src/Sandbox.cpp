@@ -1,3 +1,5 @@
+#include <glm/ext/matrix_transform.hpp>
+
 #include "imgui.h"
 #include "Thrylos.h"
 #include "Thrylos/Events/KeyEvent.h"
@@ -36,12 +38,13 @@ public:
 			layout(location = 0) in vec3 a_Position;
             
             uniform mat4 u_ViewProjection;
+            uniform mat4 u_Transform;
 
 			out vec3 v_Position;
 			void main()
 			{
 				v_Position = a_Position;
-				gl_Position = u_ViewProjection * vec4(a_Position, 1.0);	
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);	
 			}
 		)";
         const std::string fragmentSrc = R"(
@@ -58,14 +61,17 @@ public:
         m_Shader.reset(new Shader(vertexSrc, fragmentSrc));
     }
 
-    void OnUpdate() override
+    void OnUpdate(TimeStep ts) override
     {
+        //LOG_CLIENT_INFO("Delta time: {0}s ({1}ms)", ts.GetSeconds(), ts.GetMilliseconds());
         RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
         RenderCommand::Clear();
 
         Renderer::BeginScene(m_Camera);
+
+        const glm::mat4 transform = translate(glm::mat4(1.0f), m_SquarePosition);
             
-        Renderer::Submit(m_VertexArray, m_Shader);
+        Renderer::Submit(m_VertexArray, m_Shader, transform);
 
         Renderer::EndScene();
     }
@@ -83,19 +89,15 @@ public:
         switch (auto keyCode = static_cast<Th_Key>(e.GetKeyCode()))
         {
             case Th_Key::Left:
-                LOG_CLIENT_INFO("Left arrow key pressed");
                 m_Camera.SetPosition(m_Camera.GetPosition() + glm::vec3(-0.1f, 0.0f, 0.0f));
                 break;
             case Th_Key::Right:
-                LOG_CLIENT_INFO("Right arrow key pressed");
                 m_Camera.SetPosition(m_Camera.GetPosition() + glm::vec3(0.1f, 0.0f, 0.0f));
                 break;
             case Th_Key::Up:
-                LOG_CLIENT_INFO("Up arrow key pressed");
                 m_Camera.SetPosition(m_Camera.GetPosition() + glm::vec3(0.0f, 0.1f, 0.0f));
                 break;
             case Th_Key::Down:
-                LOG_CLIENT_INFO("Down arrow key pressed");
                 m_Camera.SetPosition(m_Camera.GetPosition() + glm::vec3(0.0f, -0.1f, 0.0f));
                 break;
             case Th_Key::E:
@@ -119,6 +121,7 @@ private:
     OrtographicCamera m_Camera;
     std::shared_ptr<Shader> m_Shader;
     std::shared_ptr<VertexArray> m_VertexArray;
+    glm::vec3 m_SquarePosition = { 0.0f, 0.0f, 0.0f };
 };
 
 class Sandbox : public Application

@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+#include "Core/TimeStep.h"
 #include "Thrylos/Core.h"
 #include "Thrylos/Events/Event.h"
 
@@ -13,7 +14,7 @@ namespace Thrylos
 
         virtual void OnAttach() {}
         virtual void OnDetach() {}
-        virtual void OnUpdate() {}
+        virtual void OnUpdate(TimeStep ts) {}
         virtual void OnEvent(Event& event) {}
 
         virtual void OnImGuiRender() {}

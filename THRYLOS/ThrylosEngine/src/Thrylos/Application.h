@@ -4,6 +4,7 @@
 #include "Layer.h"
 #include "LayerStack.h"
 #include "Window.h"
+#include "Core/TimeStep.h"
 #include "Events/ApplicationEvent.h"
 #include "imgui/ImGuiLayer.h"
 #include "Renderer/OrtographicCamera.h"
@@ -87,6 +88,7 @@ namespace Thrylos
         ImGuiLayer* m_ImGuiLayer;
         bool m_Running = true;
         LayerStack m_LayerStack;
+        float m_LastFrameTime = 0.0f;
         static Application* m_SInstance;
     };
 

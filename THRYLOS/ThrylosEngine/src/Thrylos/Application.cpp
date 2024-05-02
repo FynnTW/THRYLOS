@@ -120,8 +120,12 @@ namespace Thrylos
     {
         while (m_Running)
         {
+            const float time = static_cast<float>(glfwGetTime());
+            TimeStep timeStep = time - m_LastFrameTime;
+            m_LastFrameTime = time;
+            
             for (Layer* layer : m_LayerStack)
-                layer->OnUpdate();
+                layer->OnUpdate(timeStep);
             
             m_ImGuiLayer->Begin();
             

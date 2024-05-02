@@ -16,3 +16,4 @@
 #include "Thrylos/Renderer/Shader.h"
 #include "Thrylos/Renderer/RenderCommand.h"
 #include "Thrylos/Events/KeyCodes.h"
+#include "Thrylos/Core/TimeStep.h"

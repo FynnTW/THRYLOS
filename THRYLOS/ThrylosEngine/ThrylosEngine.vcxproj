@@ -164,6 +164,7 @@
     <ClInclude Include="src\Thrylos.h" />
     <ClInclude Include="src\Thrylos\Application.h" />
     <ClInclude Include="src\Thrylos\Core.h" />
+    <ClInclude Include="src\Thrylos\Core\TimeStep.h" />
     <ClInclude Include="src\Thrylos\EntryPoint.h" />
     <ClInclude Include="src\Thrylos\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Thrylos\Events\Event.h" />
