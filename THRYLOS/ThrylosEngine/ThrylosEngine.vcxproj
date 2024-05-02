@@ -154,6 +154,8 @@
   <ItemGroup>
     <ClInclude Include="src\Platform\opengl\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\opengl\OpenGLContext.h" />
+    <ClInclude Include="src\Platform\opengl\OpenGLRendererApi.h" />
+    <ClInclude Include="src\Platform\opengl\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Platform\opengl\imgui_impl_glfw.h" />
@@ -165,6 +167,7 @@
     <ClInclude Include="src\Thrylos\EntryPoint.h" />
     <ClInclude Include="src\Thrylos\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Thrylos\Events\Event.h" />
+    <ClInclude Include="src\Thrylos\Events\KeyCodes.h" />
     <ClInclude Include="src\Thrylos\Events\KeyEvent.h" />
     <ClInclude Include="src\Thrylos\Events\MouseEvent.h" />
     <ClInclude Include="src\Thrylos\Input.h" />
@@ -173,8 +176,12 @@
     <ClInclude Include="src\Thrylos\Log.h" />
     <ClInclude Include="src\Thrylos\Renderer\Buffer.h" />
     <ClInclude Include="src\Thrylos\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Thrylos\Renderer\OrtographicCamera.h" />
+    <ClInclude Include="src\Thrylos\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Thrylos\Renderer\Renderer.h" />
+    <ClInclude Include="src\Thrylos\Renderer\RendererApi.h" />
     <ClInclude Include="src\Thrylos\Renderer\Shader.h" />
+    <ClInclude Include="src\Thrylos\Renderer\VertexArray.h" />
     <ClInclude Include="src\Thrylos\Window.h" />
     <ClInclude Include="src\Thrylos\imgui\ImGuiLayer.h" />
     <ClInclude Include="src\tpch.h" />
@@ -182,6 +189,8 @@
   <ItemGroup>
     <ClCompile Include="src\Platform\opengl\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\opengl\OpenGLContext.cpp" />
+    <ClCompile Include="src\Platform\opengl\OpenGLRendererApi.cpp" />
+    <ClCompile Include="src\Platform\opengl\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Platform\opengl\imgui_impl_glfw.cpp" />
@@ -193,8 +202,12 @@
     <ClCompile Include="src\Thrylos\Log.cpp" />
     <ClCompile Include="src\Thrylos\imgui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Thrylos\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Thrylos\Renderer\OrtographicCamera.cpp" />
+    <ClCompile Include="src\Thrylos\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Thrylos\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Thrylos\Renderer\RendererApi.cpp" />
     <ClCompile Include="src\Thrylos\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Thrylos\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\tpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

@@ -12,6 +12,8 @@
      #endif
 #endif
 
+#define BIND_EVENT_FN(x) [this](auto& event) {return x(event);}
+
 #define BIT(x) (1 << (x))
 
 #ifdef THRYLOS_DEBUG

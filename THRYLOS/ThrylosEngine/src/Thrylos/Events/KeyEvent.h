@@ -3,6 +3,8 @@
 #include "Event.h"
 #include <sstream>
 
+#include "KeyCodes.h"
+
 namespace Thrylos {
 
 #pragma region KeyEvent
@@ -48,7 +50,7 @@ namespace Thrylos {
 		 * \param repeatCount the number of times the key was pressed
 		 */
 		KeyPressedEvent(const int keycode, const int repeatCount)
-			: KeyEvent(keycode), m_RepeatCount(repeatCount) {}
+			: KeyEvent(glfwToWindowsKeyCode(keycode)), m_RepeatCount(repeatCount) {}
 
 		/**
 		 * \brief Get the number of times the key was pressed
@@ -88,7 +90,7 @@ namespace Thrylos {
 		 * \param keycode Key code of the key that was released
 		 */
 		explicit KeyReleasedEvent(const int keycode)
-			: KeyEvent(keycode) {}
+			: KeyEvent(glfwToWindowsKeyCode(keycode)) {}
 		
 		/**
 		 * \brief Convert the KeyReleasedEvent to a string
